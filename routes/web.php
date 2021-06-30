@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TopController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +14,47 @@ use App\Http\Controllers\TopController;
 |
 */
 
-Route::get('/', [TopController::class, 'top']);
+// トップページ //
+Route::get('/', function () {
 
+    $products = [
+        'ichigo',
+        'chocolate',
+        'cocoa',
+    ];
+
+    return view('homes/top');
+});
+
+// 店舗詳細 //
 Route::get('/about', function () {
-    return view('about');
+    return view('homes/about');
 });
 
-Route::get('/form', function () {
-    return view('form');
+// 元々入っていたもの //
+Route::get('/create', function () {
+    return view('../post/create');
 });
+
+// 商品一覧 //
+Route::get('/products', [ProductController::class, 'index'])
+    ->name('products.index');
+
+// 商品詳細 //
+Route::get('/products/{id}', [ProductController::class, 'show'])
+    ->name('products.show');
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/join/', function () {
     return '入会ページ';
@@ -31,13 +63,6 @@ Route::get('/join/', function () {
 Route::get('/{id}/', function ($id) {
     return $id . 'のページ';
 });
-
-
-
-
-
-
-
 
 
 

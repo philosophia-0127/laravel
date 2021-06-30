@@ -4,30 +4,56 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ url('css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <title>nagano_cake</title>
+    <link href="https://fonts.googleapis.com/css?family=Caveat">
+
+    <script src="https://kit.fontawesome.com/55668a3b00.js" crossorigin="anonymous"></script>
+
+    <title>Asana Cake</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-secondary py-4 mb-4">
-            <a href="{{ url('/') }}" class="font-weight-bold text-light text-decoration-none ml-3">Nagano -
-                Cake</a>
+
+            <h3 class="row">
+                <a href="{{ url('/') }}" class="title-logo text-light text-decoration-none ms-5">Asana Cake</a>
+            </h3>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#drop">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="drop">
-                <ul class="navbar-nav ms-md-auto">
-                    <li class="text-right">About</li>
-                    <li>商品一覧</li>
-                    <li>新規登録</li>
-                    <li>ログイン</li>
+                <ul class="navbar-nav ms-auto">
+
+                    {{-- @auth --}}
+                        <a href="{{ url('/about') }}" class="text-light text-decoration-none">
+                            <li class="me-3">店舗詳細</li>
+                        </a>
+                        <a href="{{ url('/products') }}" class="text-light text-decoration-none">
+                            <li class="me-3">商品一覧</li>
+                        </a>
+                    {{-- @else --}}
+                        <a href="{{ url('login') }}" class="text-light text-decoration-none">
+                            <li class="me-3">新規登録</li>
+                        </a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="text-light text-decoration-none">
+                                <li class="me-5">ログイン</li>
+                            </a>
+                        @endif
+
+                    {{-- @endauth --}}
+
                 </ul>
             </div>
+
         </nav>
     </header>
 
@@ -36,11 +62,9 @@
     </main>
 
     <footer>
-        <div class='container mt-5 bg-success'> {{-- 色付け --}}
+        <div class='container mt-5'>
             <div class='row'>
-                <div class='mx-auto'>
-                    <p class="text-center">CopyRight</p>
-                </div>
+                <p class="small text-center text-muted">© 2021　Ayumu Noda　All Rights Reserved.</p>
             </div>
         </div>
     </footer>
