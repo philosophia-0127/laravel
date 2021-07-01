@@ -1,5 +1,6 @@
 <x-layout>
-    <d class="container">
+    <div class="container">
+        
         <h2 class="text-center mt-3">商品一覧</h2>
         <hr class="my-4">
 

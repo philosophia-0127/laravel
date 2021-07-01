@@ -48,13 +48,13 @@
                                     </a>
                                 </div>
                                 <div class="carousel-item">
-                                    <a href="">
+                                    <a href="{{ route('products.show', $product) }}">
                                         <img src="{{ asset('../images/chocolate_cake.jpg') }}" class="w-100"
                                             alt="二枚目">
                                     </a>
                                 </div>
                                 <div class="carousel-item">
-                                    <a href="">
+                                    <a href="{{ route('products.show', $product) }}">
                                         <img src="{{ asset('../images/cocoa_puding.jpg') }}" class="w-100" alt="三枚目">
                                     </a>
                                 </div>

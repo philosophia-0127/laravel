@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,8 @@ Route::get('/', function () {
         'cocoa',
     ];
 
-    return view('homes/top');
+    return view('homes/top')
+        ->with(['products' => $products]);
 });
 
 // 店舗詳細 //
@@ -43,6 +45,12 @@ Route::get('/products', [ProductController::class, 'index'])
 // 商品詳細 //
 Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
+
+
+
+// 注文画面 //
+Route::get('/order/input', [OrderController::class, 'input'])
+    ->name('orders.input');
 
 
 
