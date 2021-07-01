@@ -52,18 +52,6 @@ Route::get('/products/{id}', [ProductController::class, 'show'])
 Route::get('/order/input', [OrderController::class, 'input'])
     ->name('orders.input');
 
-
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/join/', function () {
     return '入会ページ';
 });
@@ -72,22 +60,8 @@ Route::get('/{id}/', function ($id) {
     return $id . 'のページ';
 });
 
-
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('posts', 'PostController');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
