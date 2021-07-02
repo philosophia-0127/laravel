@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+            <div class="card text-center">
+                <div class="card-header">{{ __('ログインしましたよ！！！') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <a href="{{ route('products.index') }}">
+                        商品一覧へ
+                    </a>
+
                 </div>
             </div>
         </div>
