@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderController;
+// use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,10 @@ use App\Http\Controllers\OrderController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
 
 // トップページ //
 Route::get('/', function () {
@@ -48,30 +52,6 @@ Route::get('/products/{id}', [ProductController::class, 'show'])
 
 
 
-// 注文画面 //
-Route::get('/order/input', [OrderController::class, 'input'])
-    ->name('orders.input');
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/join/', function () {
-    return '入会ページ';
-});
-
-Route::get('/{id}/', function ($id) {
-    return $id . 'のページ';
-});
-
 
 
 
@@ -91,3 +71,15 @@ Route::resource('posts', 'PostController');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+// 注文画面 //
+
+Route::get('/contact/input', 'ContactController@input'); // 入力画面
+
+Route::patch('/contact/confirm', 'ContactController@confirm'); // 確認画面
+
+Route::post('/contact/finish', 'ContactController@finish'); // 完了画面
