@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-// use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,10 @@ use App\Http\Controllers\ProductController;
 */
 
 
+// ログイン //
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 // トップページ //
@@ -51,35 +54,10 @@ Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
 
 
-
-
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('posts', 'PostController');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-
-
 // 注文画面 //
 
-Route::get('/contact/input', 'ContactController@input'); // 入力画面
+Route::get('/orders/input', 'OrderController@input'); // 入力画面
 
-Route::patch('/contact/confirm', 'ContactController@confirm'); // 確認画面
+Route::patch('/orders/confirm', 'OrderController@confirm'); // 確認画面
 
-Route::post('/contact/finish', 'ContactController@finish'); // 完了画面
+Route::post('/orders/finish', 'OrderController@finish'); // 完了画面

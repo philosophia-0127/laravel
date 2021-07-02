@@ -40,12 +40,12 @@
                         </a>
                     {{-- @else --}}
                         <a href="{{ url('login') }}" class="text-light text-decoration-none">
-                            <li class="me-3">新規登録</li>
+                            <li class="me-3">ログイン</li>
                         </a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="text-light text-decoration-none">
-                                <li class="me-5">ログイン</li>
+                                <li class="me-5">新規登録</li>
                             </a>
                         @endif
 

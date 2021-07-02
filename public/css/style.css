@@ -51,3 +51,38 @@
 .product-list {
     width: 90%;
 }
+
+
+
+
+.products_show a {
+    text-decoration: none;
+}
+
+.back-link {
+    font-size: 20px;
+}
+
+.link {
+	position: relative;
+	padding: 0.1em 0.3em;
+	display: inline-block;
+	transition: .3s;
+	color: #090;
+}
+
+.link::after {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	content: '';
+	width: 0;
+	height: 1px;
+	background-color: rgb(248, 4, 126);
+	transition: .3s;
+	transform: translateX(-50%);
+}
+
+.link:hover::after {
+	width: 100%;
+}

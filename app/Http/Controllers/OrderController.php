@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Mail\CotactMail;
 use Illuminate\Support\Facades\Mail;
 
-class ContactController extends Controller
+class OrderController extends Controller
 {
     /**
      * 入力画面
@@ -20,7 +20,7 @@ class ContactController extends Controller
             'title' => 'お問い合わせ',
             'subtitle' => '入力画面',
         );
-        return view('contact.input')->with($hash);
+        return view('orders.input')->with($hash);
     }
 
     /**
@@ -34,7 +34,7 @@ class ContactController extends Controller
             'title' => 'お問い合わせ',
             'subtitle' => '確認画面',
         );
-        return view('contact.confirm')->with($hash);
+        return view('orders.confirm')->with($hash);
     }
 
     /**
@@ -56,7 +56,7 @@ class ContactController extends Controller
             'subtitle' => '完了画面',
         );
 
-        return view('contact.finish')->with($hash);
+        return view('orders.finish')->with($hash);
     }
 
 }
