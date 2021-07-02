@@ -4,6 +4,7 @@
 
 
             <form method="post">
+                @method('PUT')
 
                 {{ method_field('patch') }}
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
