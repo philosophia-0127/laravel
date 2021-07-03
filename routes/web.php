@@ -15,6 +15,18 @@ use App\Http\Controllers\OrderController;
 |
 */
 
+// 注文画面 //
+Route::group(['prefix' => 'orders', 'middleware => auth'], function() {
+
+    Route::get('input', 'OrderController@input') // 入力画面
+        ->name('orders.input');
+
+    Route::post('confirm', 'OrderController@confirm') // 確認画面
+        ->name('orders.confirm');
+
+    Route::post('finish', 'OrderController@finish') // 完了画面
+        ->name('orders.finish');
+});
 
 // ログイン //
 Auth::routes();
@@ -52,12 +64,3 @@ Route::get('/products', [ProductController::class, 'index'])
 // 商品詳細 //
 Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
-
-
-// 注文画面 //
-
-Route::get('/orders/input', 'OrderController@input'); // 入力画面
-
-Route::patch('/orders/confirm', 'OrderController@confirm'); // 確認画面
-
-Route::post('/orders/finish', 'OrderController@finish'); // 完了画面

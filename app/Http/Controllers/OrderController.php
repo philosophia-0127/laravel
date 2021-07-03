@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ContactForm;
 
     // 作成したメールクラスをuseする
 use App\Mail\CotactMail;
@@ -15,12 +16,7 @@ class OrderController extends Controller
      */
     public function input()
     {
-        // Bladeで使う変数
-        $hash = array(
-            'title' => 'お問い合わせ',
-            'subtitle' => '入力画面',
-        );
-        return view('orders.input')->with($hash);
+        return view('orders.input');
     }
 
     /**
@@ -28,13 +24,18 @@ class OrderController extends Controller
      */
     public function confirm(Request $request)
     {
-        // Bladeで使う変数
-        $hash = array(
-            'request' => $request,
-            'title' => 'お問い合わせ',
-            'subtitle' => '確認画面',
-        );
-        return view('orders.confirm')->with($hash);
+        $contact = new ContactForm;
+
+        $contact->last_name = $request->input('last_name');
+        $contact->first_name = $request->input('first_name');
+        $contact->email = $request->input('email');
+        $contact->gender = $request->input('gender');
+        $contact->age = $request->input('age');
+        $contact->contact = $request->input('contact');
+
+        $contact->save();
+
+        return redirect('/');
     }
 
     /**
