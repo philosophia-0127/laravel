@@ -20,7 +20,7 @@
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->gender }}</td>
                         <td>{{ $contact->age }}</td>
-                        <td>{{ $contact->contact }}</td>
+                        <td>{!! nl2br(e($contact->contact)) !!}</td>
                     </tr>
                 </tbody>
             </table>

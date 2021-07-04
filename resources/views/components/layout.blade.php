@@ -31,35 +31,38 @@
             <div class="collapse navbar-collapse" id="drop">
                 <ul class="navbar-nav ms-auto">
 
-                    {{-- @auth --}}
                         <a href="{{ url('/about') }}" class="text-light text-decoration-none">
                             <li class="me-3">店舗詳細</li>
                         </a>
                         <a href="{{ url('/products') }}" class="text-light text-decoration-none">
                             <li class="me-3">商品一覧</li>
                         </a>
-                    {{-- @else --}}
+
+                    @guest
+
                         <a href="{{ url('login') }}" class="text-light text-decoration-none">
                             <li class="me-3">ログイン</li>
                         </a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="text-light text-decoration-none">
-                                <li class="me-5">新規登録</li>
+                                <li class="me-3">新規登録</li>
                             </a>
                         @endif
 
-                    {{-- @endauth --}}
+                    @else
 
-                        <a href="{{ route('logout') }}"
+                        <a href="{{ route('logout') }}" class="text-light text-decoration-none"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                            <li>{{ __('ログアウト') }}</li>
+                            <li class="me-3">ログアウト</li>
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+
+                    @endguest
 
                 </ul>
             </div>

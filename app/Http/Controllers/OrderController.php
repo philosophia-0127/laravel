@@ -15,14 +15,24 @@ class OrderController extends Controller
         return view('orders.input');
     }
 
-    // 確認画面 //
-    public function confirm(Request $request)
+    // パラメーター貯蔵 //
+    public function store(Request $request)
     {
         $request->validate([
             'last_name' => 'required|min:2',
             'first_name' => 'required|min:2',
+            'email' => 'required',
             'gender' => 'required',
             'age' => 'required',
+        ], [
+            'last_name.required' => '名字は入力必須です',
+            'last_name.min' => ':min 文字以上入力してください',
+            'first_name.required' => '名前は入力必須です',
+            'first_name.min' => ':min 文字以上入力してください',
+
+            'email.required' => 'Eメールは入力必須です',
+            'gender.required' => '当てはまる性別を入力してください',
+            'age.required' => '当てはまる年齢を入力してください',
         ]);
 
 
@@ -38,7 +48,14 @@ class OrderController extends Controller
         $contact->save();
 
         return redirect()
-            ->route('orders.finish');     #redirect先不明
+            ->route('orders.confirm');
+    }
+
+    // 確認画面 //
+    public function confirm()
+    {
+        return view('orders.confirm');
+            // ->with(['contact' => $contact]);
     }
 
     // 完了画面 //

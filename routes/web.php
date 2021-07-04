@@ -16,15 +16,21 @@ use App\Http\Controllers\OrderController;
 */
 
 // 注文画面 //
-Route::group(['prefix' => 'orders', 'middleware => auth'], function() {
+Route::group(['prefix' => 'orders', 'middleware' => 'auth'], function() {
 
     Route::get('input', 'OrderController@input') // 入力画面
         ->name('orders.input');
 
-    Route::post('confirm', 'OrderController@confirm') // 確認画面
-        ->name('orders.confirm');
+    Route::post('store', 'OrderController@store') // パラメーター貯蔵
+        ->name('orders.store');
 
-    Route::post('finish', 'OrderController@finish') // 完了画面
+    Route::get('confirm', 'OrderController@confirm') // 確認画面&編集可
+        ->name('orders.confirm');
+        // ->where('id', '[0-9]+');
+
+    // Route::patch('')
+
+    Route::get('finish', 'OrderController@finish') // 完了画面
         ->name('orders.finish');
 });
 
