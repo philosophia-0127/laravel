@@ -4,17 +4,32 @@
 
 
             <form method="post" action="{{ route('orders.confirm') }}">
+                @method('POST')
                 @csrf
 
                     <!--氏名-->
                     <div class="form-group col-md-6 mb-3">
                         <label for="lastName">名字</label>
                         <input type="text" name="last_name" class="form-control" placeholder="名字">
+
+                        @error('last_name')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
                         <label for="firstName">名前</label>
                         <input type="text" name="first_name" class="form-control" placeholder="名前">
+
+                        @error('first_name')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
                     </div>
                     <!--/氏名-->
 
@@ -30,6 +45,13 @@
                         性別
                         <input type="radio" name="gender" value="0">男性
                         <input type="radio" name="gender" value="1">女性
+
+                        @error('gender')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
                     </div>
                     <!--/性別-->
 
@@ -45,6 +67,14 @@
                             <option value="5">50歳～59歳</option>
                             <option value="6">60歳～</option>
                         </select>
+
+                        @error('age')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+
                     </div>
                     <!--/年齢-->
 

@@ -64,3 +64,4 @@ Route::get('/products', [ProductController::class, 'index'])
 // 商品詳細 //
 Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
+    // ->where('id', '[0-9]+');
