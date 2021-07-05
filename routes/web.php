@@ -21,12 +21,12 @@ Route::group(['prefix' => 'orders', 'middleware' => 'auth'], function() {
     Route::get('input', 'OrderController@input') // 入力画面
         ->name('orders.input');
 
-    Route::get('confirm', 'OrderController@confirm') // 確認画面&編集可
+    Route::post('confirm', 'OrderController@confirm') // 確認画面&編集可
         ->name('orders.confirm');
         // ->where('id', '[0-9]+');
 
     Route::post('store', 'OrderController@store') // パラメーター貯蔵
-    ->name('orders.store');
+        ->name('orders.store');
 
     Route::get('finish', 'OrderController@finish') // 完了画面
         ->name('orders.finish');
