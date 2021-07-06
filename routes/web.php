@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +70,11 @@ Route::get('/products', [ProductController::class, 'index'])
 Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
     // ->where('id', '[0-9]+');
+
+
+
+Route::get('/users/show', [UserController::class, 'show'])
+    ->name('users.show');
+
+Route::get('/users/edit', [UserController::class, 'edit'])
+    ->name('users.edit');

@@ -52,6 +52,10 @@
 
                     @else
 
+                        <a href="{{ route('users.show') }}" class="text-light text-decoration-none">
+                            <li class="me-3">マイページ</li>
+                        </a>
+
                         <a href="{{ route('logout') }}" class="text-light text-decoration-none"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
