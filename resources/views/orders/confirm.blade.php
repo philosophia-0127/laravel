@@ -7,6 +7,7 @@
                     <tr>
                         <th scope="col">苗字</th>
                         <th scope="col">名前</th>
+                        <th scope="col">メール</th>
                         <th scope="col">性別</th>
                         <th scope="col">年齢</th>
                         <th scope="col">お問い合わせ内容</th>
@@ -25,7 +26,7 @@
                 </tbody>
             </table>
 
-            <button type="submit" class="btn btn-primary btn-block">送信</button>
+            <a href="{{ route('orders.finish') }}" class="btn btn-primary">送信</a>
 
         </div>
     </div>

@@ -25,8 +25,8 @@ Route::group(['prefix' => 'orders', 'middleware' => 'auth'], function() {
         ->name('orders.confirm');
         // ->where('id', '[0-9]+');
 
-    Route::post('store', 'OrderController@store') // パラメーター貯蔵
-        ->name('orders.store');
+    // Route::post('store', 'OrderController@store') // パラメーター貯蔵
+    //     ->name('orders.store');
 
     Route::get('finish', 'OrderController@finish') // 完了画面
         ->name('orders.finish');
