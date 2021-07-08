@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ContactForm;
-
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -36,7 +35,7 @@ class OrderController extends Controller
         ]);
 
 
-        $contact = new ContactForm;
+        $contact = new ContactForm();
 
         $contact->last_name = $request->input('last_name');
         $contact->first_name = $request->input('first_name');
@@ -46,11 +45,6 @@ class OrderController extends Controller
         $contact->contact = $request->input('contact');
 
         $contact->save();
-
-        // dd($request->all());
-
-        // return redirect()
-        //     ->route('orders.confirm');
 
         return view('orders.confirm')
             ->with(['contact' => $contact]);
@@ -104,5 +98,4 @@ class OrderController extends Controller
 
         return view('orders.finish');
     }
-
 }
