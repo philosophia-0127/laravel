@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
 
-            $table->integer('zip_code')->nullable();    #郵便番号
+            $table->string('postal_code')->nullable();    #郵便番号
             $table->string('address')->nullable();    #住所
             $table->string('ship_address')->nullable();    #配送先住所
-            $table->integer('user_tel')->nullable();    #電話番号
+            $table->string('user_tel')->nullable();    #電話番号
             $table->string('menber_status')->nullable();    #退会ステータス
 
             $table->timestamps();
