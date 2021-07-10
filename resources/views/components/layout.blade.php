@@ -52,7 +52,7 @@
 
                     @else
 
-                        <a href="{{ route('users.show') }}" class="text-light text-decoration-none">
+                        <a href="{{ route('users.edit') }}" class="text-light text-decoration-none">
                             <li class="me-3">マイページ</li>
                         </a>
 
@@ -65,6 +65,12 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+
+                        <a class="me-4 text-light text-decoration-none" href="{{ route('cart.index') }}">
+                            <li>
+                                <i class="fas fa-shopping-cart fa-2x"></i>
+                            </li>
+                        </a>
 
                     @endguest
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TopAboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,6 @@ Route::group(['prefix' => 'orders', 'middleware' => 'auth'], function() {
         ->name('orders.confirm');
         // ->where('id', '[0-9]+');
 
-    // Route::post('store', 'OrderController@store') // パラメーター貯蔵
-    //     ->name('orders.store');
-
     Route::get('finish', 'OrderController@finish') // 完了画面
         ->name('orders.finish');
 });
@@ -40,41 +38,42 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // トップページ //
-Route::get('/', function () {
-
-    $products = [
-        'ichigo',
-        'chocolate',
-        'cocoa',
-    ];
-
-    return view('homes/top')
-        ->with(['products' => $products]);
-});
+Route::get('/', [TopAboutController::class, 'top'])
+    ->name('homes.top');
 
 // 店舗詳細 //
-Route::get('/about', function () {
-    return view('homes/about');
-});
+Route::get('/about', [TopAboutController::class, 'about'])
+    ->name('homes.about');
 
 // 元々入っていたもの //
 Route::get('/create', function () {
     return view('../post/create');
 });
 
-// 商品一覧 //
-Route::get('/products', [ProductController::class, 'index'])
-    ->name('products.index');
 
-// 商品詳細 //
-Route::get('/products/{id}', [ProductController::class, 'show'])
-    ->name('products.show');
-    // ->where('id', '[0-9]+');
+// 商品一覧 & 商品詳細 //
+Route::name('products.')
+    ->group(function () {
+        Route::get('/products', 'ProductController@index')->name('index');
+        Route::get('/products/{id}', 'ProductController@show')->name('show');
+            // ->where('id', '[0-9]+');
+    });
+
+Route::name('line_item.')
+    ->group(function () {
+        Route::post('/line_item/create', 'LineItemController@create')->name('create');
+    });
+
+Route::name('cart.')
+    ->group(function () {
+        Route::get('/cart', 'CartController@index')->name('index');
+    });
 
 
 
-Route::get('/users/show', [UserController::class, 'show'])
-    ->name('users.show');
 
-Route::get('/users/edit', [UserController::class, 'edit'])
-    ->name('users.edit');
+// ユーザー //
+Route::group(['prefix' => 'users', 'middleware' => 'auth'], function() {
+    Route::get('edit', 'UserController@edit')->name('users.edit');
+    Route::post('update', 'UserController@update')->name('users.update');
+});

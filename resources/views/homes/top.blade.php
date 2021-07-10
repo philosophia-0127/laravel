@@ -39,33 +39,49 @@
                             <li data-target="#carouselIndicators" data-slide-to="2"></li>
                         </ol>
 
-                        <div class="carousel-inner">
+                            <div class="carousel-inner">
 
-                            @forelse ($products as $product)
-                                <div class="carousel-item active">
-                                    <a href="{{ route('products.show', $product) }}">
-                                        <img src="{{ asset('../images/ichigo.jpg') }}" class="w-100" alt="一枚目">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a href="{{ route('products.show', $product) }}">
-                                        <img src="{{ asset('../images/chocolate_cake.jpg') }}" class="w-100"
-                                            alt="二枚目">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a href="{{ route('products.show', $product) }}">
-                                        <img src="{{ asset('../images/cocoa_puding.jpg') }}" class="w-100" alt="三枚目">
-                                    </a>
-                                </div>
-                            @empty
-                                NO Products Yet.
-                            @endforelse
+                                @forelse ($products as $product)
+                                    <div class="carousel-item active">
+                                        <a href="{{ route('products.show', $product) }}">
+                                            <img src="{{ asset('../images/ichigo.jpg') }}" class="w-100 h-100" alt="一枚目">
+                                        </a>
+                                    </div>
 
-                        </div>
+                                    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </a>
+                                @empty
+                                    No Products Yet.
+                                @endforelse
+
+                            </div>
 
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             </div>
         </div>
