@@ -15,8 +15,9 @@ class CreateLineItemsTable extends Migration
     {
         Schema::create('line_items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('cart_id'); //外部キー
-            $table->unsignedBigInteger('product_id'); //外部キー
+            $table->unsignedBigInteger('cart_id');
+            $table->unsignedBigInteger('product_id');
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('cart_id')
