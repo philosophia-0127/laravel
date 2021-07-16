@@ -1,30 +1,32 @@
 <x-layout>
     <div class="container">
-        <div class="cart__title">
+        <div class="cart__title title-logo h4">
             Shopping Cart
         </div>
         @if(count($line_items) > 0)
             <div class="cart-wrapper">
-                @foreach ($line_items as $item)
-                <div class="card mb-3">
-                    <div class="row">
-                        <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="product-cart-img"/>
-                        <div class="card-body">
-                            <div class="card-product-name col-6">
-                                {{ $item->name }}
-                            </div>
-                            <div class="card-quantity col-2">
-                                {{ $item->pivot->quantity }}個
-                            </div>
-                            <div class="card__total-price col-3 text-center">
-                                ￥{{ number_format($item->price * $item->pivot->quantity) }}
-                            </div>
+                <div class="row">
+                    @foreach ($line_items as $item)
+                        <div class="card col-4 my-4">
+
+                                <img src="{{ asset($item->image) }}" class="col-10 mx-auto mt-4">
+                                <div class="card-body">
+                                    <div class="ms-3">
+                                        {{ $item->name }}
+                                    </div>
+                                    <div class="ms-3">
+                                        {{ $item->pivot->quantity }}個
+                                    </div>
+                                    <div class="text-center">
+                                        ￥{{ number_format($item->price * $item->pivot->quantity) }}
+                                    </div>
+                                </div>
+
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-            <div class="cart__sub-total">
+            <div class="cart__sub-total text-center border-bottom py-3 h5">
                 小計：￥{{ number_format($total_price) }} 円
             </div>
         @else

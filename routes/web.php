@@ -52,22 +52,24 @@ Route::get('/create', function () {
 
 
 // 商品一覧 & 商品詳細 //
-Route::name('products.')
-    ->group(function () {
-        Route::get('/products', 'ProductController@index')->name('index');
-        Route::get('/products/{id}', 'ProductController@show')->name('show');
-            // ->where('id', '[0-9]+');
-    });
+    Route::name('products.')
+        ->group(function () {
+            Route::get('/products', 'ProductController@index')->name('index');
+            Route::get('/products/{id}', 'ProductController@show')->name('show');
+                // ->where('id', '[0-9]+');
+        });
 
-Route::name('line_item.')
-    ->group(function () {
-        Route::post('/line_item/create', 'LineItemController@create')->name('create');
-    });
+    Route::name('line_item.')
+        ->group(function () {
+            Route::post('/line_item/create', 'LineItemController@create')->name('create');
+        });
 
-Route::name('cart.')
-    ->group(function () {
-        Route::get('/cart', 'CartController@index')->name('index');
-    });
+Route::group(['middleware' => 'auth'], function() {
+    Route::name('cart.')
+        ->group(function () {
+            Route::get('/cart', 'CartController@index')->name('index');
+        });
+});
 
 
 

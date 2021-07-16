@@ -19,6 +19,8 @@ class UserSeeder extends Seeder
                 'name' => 'Aさん',
                 'email' => 'aaa@aaa.com',
                 'password' => 'aaaaaaaa',
+                'profile_image_id' => '',
+
                 'postal_code' => '123-4567',
                 'address' => '東京都板橋区高島平1-1-1',
                 'ship_address' => '東京都板橋区高島平1-1-1',
@@ -29,6 +31,8 @@ class UserSeeder extends Seeder
                 'name' => 'Bさん',
                 'email' => 'bbb@bbb.com',
                 'password' => 'bbbbbbbb',
+                'profile_image_id' => '',
+
                 'postal_code' => '123-4567',
                 'address' => '東京都板橋区高島平1-1-1',
                 'ship_address' => '東京都板橋区高島平1-1-1',
